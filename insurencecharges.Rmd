@@ -172,4 +172,4 @@ ggplot(data = test,aes(charges,y=predictedcharges,color=smoker))+geom_point()+la
 
 We can se that the correlation coefficient between actual charges and the predicted charges is **0.8656935** with 95% Confidence Interval being **0.8321945, 0.8928960**. The prediction is fairly accurate as it predicts with close to 98% accuracy. 
 
-Thus, we can say that the Liner Regression model does a good job of predicting the landing distance.
+Thus, we can say that the Liner Regression model does a good job of predicting the insurence charges.
