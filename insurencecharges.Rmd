@@ -1,0 +1,175 @@
+---
+title: "Predicting Insurance Charges"
+author: "Lucy Wu"
+output: html_document
+---
+
+
+```{r setup, include=FALSE,echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Prediction of Insurance Charges
+
+The purpose of this project is to solve a problem using linear regression and understand various feature selection and model selection techniques. In this project we predict the insurance charges based on different details.  The data used in this project can be found **[here.]()**
+
+Information about various parameters such as, age, bmi, smoke, children etc. 
+
+We have to come up with a robust regression model that can predict the insurance charges.
+
+## Packages Required 
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+library(tidyverse)
+library(dplyr)
+library(gplots)
+library(ggplot2)
+library(readxl)
+library(ggplot2)
+library(dplyr)
+library(GGally)
+library(leaps)
+library(gridExtra)
+library(plotly)
+library(mvinfluence)
+library(ggthemes)
+```
+
+## Loading and cleaning the data
+
+The data is stored in two excel sheets called insurance_web respectively. We need to load it, analyse the data for completeness.
+
+```{r echo=FALSE, message=FALSE,warning=FALSE,fig.width=10 }
+setwd("C:/Users/Lucy Wu/Documents")
+df <- read.csv("insurance_web.csv")
+```
+
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+head(df)
+```
+
+Change data type
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+df$sex <- as.factor(df$sex)
+df$smoker <- as.factor(df$smoker)
+df$region <- as.factor(df$region)
+str(df)
+```
+Observe the data
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+summary(df)
+```
+
+We sample 80% of the observation for training the regression model and the rest 20% for testing the model-
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+rows<-sample(1338,0.8*1338,replace = FALSE)
+train<-df[rows,]
+test<-df[-rows,]
+
+# checking the correlation among variables
+ggpairs(train) 
+```
+
+Since the dataset is small, we can use best subset selection for variable selection. Best subset selection algorithm will look for best subset of predictors that closely relate with the response variable. This method may not be best suited when the number of variables are too large.
+
+We will use-
+
+* Adjusted R Squared
+* CP
+* BIC
+
+As creterion for selecting the best subset of predictors for our linear model.
+
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+#Best subset variable selection
+best.subset<-regsubsets(charges~.,data = train,nvmax = 7)
+best.subset.summary <- summary(best.subset)
+
+# Now, we will use different criterion to select the best subset of the predictors for our problem
+# 1. Adjused R squared
+p1<-ggplot(data = NULL,aes(x=1:7,y = best.subset.summary$adjr2))+geom_line(color='white')+labs(x='Index',y='Adjusted R Squared',title='Adjusted R Squared')+
+  theme_hc(bgcolor = "darkunica")
+
+# 2. CP
+p2<-ggplot(data = NULL,aes(x=1:7,y = best.subset.summary$cp))+geom_line(color='white')+labs(x='Index',y='CP',title='CP')+
+  theme_hc(bgcolor = "darkunica")
+
+# 3. BIC
+p3<-ggplot(data = NULL,aes(x=1:7,y = best.subset.summary$bic))+geom_line(color='white')+labs(x='Index',y='BIC',title='BIC')+
+  theme_hc(bgcolor = "darkunica")
+
+grid.arrange(p1,p2,p3)
+```
+
+From above graphs, it is visible that-
+
+* Adjusted R Squared increases with index upto index 3, then almost stays constant
+* CP gets reduced with index up to 3, then almost stays constant
+* BIC reduces with index up to 3, later increases gradually
+
+Thus,subset with index 3, is the best subset that leads to optimum results. We will use this subset for our linear model.
+
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+# The best model is model with index 3.
+best.subset.summary$outmat[3,]
+```
+
+The best subset contains predictors- age, bmi and smoker.
+
+Before model the building, we try to visualise the relationship among the variables in a 3D graph just to get a sense of the data-
+
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+p <- plot_ly(train, x = ~age, y = ~charges, z = ~bmi, color = ~smoker, colors = c('red', 'blue'),alpha=0.5) %>%
+  add_markers() %>%
+  layout(scene = list(xaxis = list(title = 'age'),
+                      yaxis = list(title = 'charges'),
+                      zaxis = list(title = 'bmi')))
+p
+```
+
+# Building the model-
+We go ahead with building the model-
+
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+# Building linear regression model
+model<-lm(data=train, charges~age+bmi+smoker)
+summary(model)
+```
+
+## Model Diagnostics
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+par(mfrow=c(2,2))
+plot(model)
+par(mfrow=c(1,1))
+infIndexPlot(model, var="cook", main="Index Influence Plot")
+```
+From the graphs we can see that-
+* The residuals are normally distributed (Q-Q plot)
+* The residuals have constant variance
+* There are no obvious high laverage or high influence points
+
+Observation with index 6, has high *Cook's Distance*, 0.038. Let's take a closer look at this observation-
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+# point has high Studentized Residual > 4 but < 5
+a<-as.numeric(train[4,3])
+b<-as.numeric(train[4,6])
+ggplot(data = train,aes(x = bmi,y = charges,color= smoker))+geom_point()+geom_smooth(method='lm')+
+  geom_point(aes(x=a,y=b),color='Purple')+annotate("text", x = 125, y = 5400, label = "Possible Outlier",col='Purple')+
+  theme_hc(bgcolor = "darkunica")
+influencePlot(model)
+```
+
+
+
+## Prediction on the Test data-
+
+Now we try to predict the insurance charges of the observations from test data. 
+```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10 }
+test$predictedcharges<-predict(model,test)
+cor.test(test$charges,test$predictedcharges)
+ggplot(data = test,aes(charges,y=predictedcharges,color=smoker))+geom_point()+labs(x='Actual Charges',
+      y='Predicted Charges',title='Prediction Graph')+theme_hc(bgcolor = "darkunica")
+```
+
+We can se that the correlation coefficient between actual charges and the predicted charges is **0.8656935** with 95% Confidence Interval being **0.8321945, 0.8928960**. The prediction is fairly accurate as it predicts with close to 98% accuracy. 
+
+Thus, we can say that the Liner Regression model does a good job of predicting the landing distance.

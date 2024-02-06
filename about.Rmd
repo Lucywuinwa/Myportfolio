@@ -1,0 +1,111 @@
+---
+title: "__"
+author: "Lucy"
+output: html_document
+---
+
+<style>
+  .col2 {
+    columns: 2 300px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+    column-gap: 40px;
+  }
+</style>
+ 
+<div class="col2">
+
+My name is Lucy and I am seeking a new opportunity where I can use my skills to gather and analyze data to improve our processes or understand customers better. I enjoy using data to solve problems and make business even better. It’s like being a detective, but instead of solving crimes, I’m solving problems. I am open to learning about new opportunities in the Great Seattle area or remote positions. Please feel free to contact me via email or through LinkedIn messaging. I would be happy to send you my resume.
+
+
+## Academic Background
+
+* **M.S. ** in *Data Science* at [Eastern University](https://www.eastern.edu/academics/graduate-programs/ms-data-science) 
+
+* **Bachelor of Business Administration** in *Finance* at [Chinese Cultural University-Taiwan Taipei](https://crbbbf.pccu.edu.tw/index.php?Lang=en)
+
+* **Google Data Analytics Certificate ** 
+
+<br>
+
+<br>
+<img src="images/lucy.png" title="MyImage" alt="Avatar" width="125px" height="250px" style="display: block; margin: auto;"/>
+<div class="col2">
+<center>
+<a href="https://https://www.linkedin.com/in/wu-lucy"><img src="images/Li.png"  style="width:40px; height:30px" title="LinkedIn" alt="LinkedIn"></a>
+<a href="https://github.com/lucywuinwa"><img src="images/GitHub.png"  style="width:80px; height:30px" title="Git" alt="Git"></a>
+<a href="mailto:lucywuinwa@mail.uc.edu"><img src="images/mail.png"  style="width:30px; height:30px" title="mail" alt="mail"></a>
+</center>
+</div>
+
+</div>
+
+## Professional Background
+
+Over the years, I have worked in sales operations including sales, supply chain, marketing and eCommerce industries.
+
+**Sales Administrator **
+
+Autel Robotics is a revolutionary tech company. Hired to enhance sales efficiency and minimize errors leveraging data insights.
+
+  -  Reduced order errors by 63% by analyzing complex data reports across 3   departments to correct bugs.
+
+  -  Improved communication by a minimum of 50% between the China factory and the US office, leveraging data-driven solutions.
+  -  Implemented a robust data organization system to streamline customer file and sales report management.
+  -  Established and managed a standardized order entry procedure to oversee daily orders and shipping documentation.
+
+
+**E-commerce Sales Coordinator**
+
+Shinn Fu Company of America, often known as SFA, specializes in the design, manufacturing, and distribution of automotive and industrial equipment. Managing high-order volume, boosted revenue, reduced chargebacks, ensured quality checks, and
+improved online store development.
+
+  -  Managed and optimized over 1000 weekly online orders across multiple platforms, including Amazon and Walmart.
+  -  Reduced chargebacks by 30% and increased sales revenue by 15% for each account through collaborative efforts with
+sales and technical teams.
+  -  Ensured seamless customer experiences by conducting quality checks on product and category pages, search keywords,
+and navigation elements.
+  -  Tracked, investigated, and resolved various issues, actively contributing workflow improvement recommendations to
+enhance the efficiency of the warehouse team.
+
+
+**Sales Specialist **
+
+Lumens Digital Optics designs and manufactures technical goods. Hired to manage international distribution, generate sales,
+develop distributor accounts, lead marketing efforts, attend trade shows, and conduct webinars to boost product sales.
+
+  -  Exceeded annual sales growth targets by 10% through establishing and managing distribution relationships across
+international markets in South-East Asia, including Hong Kong, Vietnam, Malaysia, Indonesia, and Thailand.
+  -  Initiated, executed, and tracked the impact of marketing campaigns, amplifying brand visibility both locally and globally,
+resulting in successful tender wins.
+  -  Demonstrated organizational skills by planning and staffing booths at local trade shows, participating more than 5
+times annually, ultimately converting sales leads into valuable distribution partnerships.
+
+
+## Tools and Languages
+
+-   R Programming
+-   SQL
+-   Python
+-   R Programming
+-   Tableau
+-   Google Compute Engine
+-   Salesforce
+
+## Skills
+
+I mostly work on R, SQL, Python and Tableau
+
+Analytically Skills-
+
+-   Simulation
+-   Exploratory Data Analysis
+-   Regression
+-   Clustering
+-   Hypothesis Testing
+-   Classification
+-   Optimization
+-   Statistical Modeling
+-   Reporting and Visualization
+-   Information Filtering
+-   Google Analytics
