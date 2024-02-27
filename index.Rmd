@@ -20,9 +20,7 @@ output:
 ### **Hello World!**
 
 I am Lucy, a Data analyst leveraging data insights to enhance company operations, optimize processes, and drive efficient decision-making for continuous improvement.
-I have a graduate degree in Data Analytics and I enjoy solving complex
-business problems using data. I love jogging and cannot sleep
-without watching Youtube.
+I have a graduate degree in Data Science and I enjoy solving complex business problems using data. I love jogging and cannot sleep without watching YouTube.
 
 <img src="https://media.giphy.com/media/h7No5m3tAeV4Q/giphy.gif?cid=ecf05e47deu9vpwcbq3vc8c06f0p0avmfbr5x2kky60cl886&ep=v1_gifs_search&rid=giphy.gif&ct=g"/>
 <br>
