@@ -240,12 +240,12 @@ s<-as(Mat,"transactions")
 rules <- apriori(s, parameter = list(supp = 0.02,conf = 0.7))
 inspect(rules)
 ```
-Support and confidence of the 9 rules that have been identified are plotted in the below graph. The intensity of the red colour represents the lift of the rule. Higher the lift darker the colour. Minimum lift and support for the rules is a business decision and is dependent on SKU diversity, transaction volume etc. For a retail giant like Walmart or Amazon, lower support rules can also be useful.
+Support and confidence of the 9 rules that have been identified are plotted in the below graph. The intensity of the red colour represents the lift of the rule. Higher the lift darker the color. Minimum lift and support for the rules is a business decision and is dependent on SKU diversity, transaction volume etc. For a retail giant like Walmart or Amazon, lower support rules can also be useful.
 
 ```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10}
 plot(rules)
 ```
-Below is the visualization of the rules that have been identified. For the purpose of readability, the complete description of the product is shown in the below graph. In the below graph, size and the colour of the circles represent support and lift respectively.
+Below is the visualization of the rules that have been identified. For the purpose of readability, the complete description of the product is shown in the below graph. In the below graph, size and the color of the circles represent support and lift respectively.
 
 ```{r echo=TRUE, message=FALSE,warning=FALSE,fig.width=10}
 plot(rules, method="graph")

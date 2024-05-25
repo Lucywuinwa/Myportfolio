@@ -594,12 +594,12 @@ rules &lt;- apriori(s, parameter = list(supp = 0.02,conf = 0.7))</code></pre>
 ## Absolute minimum support count: 441 
 ## 
 ## set item appearances ...[0 item(s)] done [0.00s].
-## set transactions ...[4207 item(s), 22060 transaction(s)] done [0.26s].
+## set transactions ...[4207 item(s), 22060 transaction(s)] done [0.27s].
 ## sorting and recoding items ... [246 item(s)] done [0.01s].
 ## creating transaction tree ... done [0.01s].
 ## checking subsets of size 1 2 3 done [0.01s].
 ## writing ... [9 rule(s)] done [0.00s].
-## creating S4 object  ... done [0.00s].</code></pre>
+## creating S4 object  ... done [0.01s].</code></pre>
 <pre class="r"><code>inspect(rules)</code></pre>
 <pre><code>##     lhs                                     rhs                                    support confidence   coverage     lift count
 ## [1] {PINK REGENCY TEACUP AND SAUCER}     =&gt; {ROSES REGENCY TEACUP AND SAUCER }  0.02715322  0.7819843 0.03472348 16.18253   599
@@ -616,29 +616,19 @@ rules &lt;- apriori(s, parameter = list(supp = 0.02,conf = 0.7))</code></pre>
 ##      ROSES REGENCY TEACUP AND SAUCER }   =&gt; {PINK REGENCY TEACUP AND SAUCER}    0.02456936  0.7057292 0.03481414 20.32426   542</code></pre>
 <p>Support and confidence of the 9 rules that have been identified are
 plotted in the below graph. The intensity of the red colour represents
-the lift of the rule. Higher the lift darker the colour. Minimum lift
-and support for the rules is a business decision and is dependent on SKU
+the lift of the rule. Higher the lift darker the color. Minimum lift and
+support for the rules is a business decision and is dependent on SKU
 diversity, transaction volume etc. For a retail giant like Walmart or
 Amazon, lower support rules can also be useful.</p>
 <pre class="r"><code>plot(rules)</code></pre>
 <p><img src="retail_files/figure-html/unnamed-chunk-14-1.png" width="960" />
 Below is the visualization of the rules that have been identified. For
 the purpose of readability, the complete description of the product is
-shown in the below graph. In the below graph, size and the colour of the
+shown in the below graph. In the below graph, size and the color of the
 circles represent support and lift respectively.</p>
 <pre class="r"><code>plot(rules, method=&quot;graph&quot;)</code></pre>
 <p><img src="retail_files/figure-html/unnamed-chunk-15-1.png" width="960" /></p>
-</div>
-<div id="tableau-dashboard" class="section level3">
-<h3>Tableau Dashboard</h3>
-<p>Based on all the analysis done so far in project, tableau dashboard
-is designed for the management to get the report of the business at a
-glance. The dashboard that has been designed is interactive, the results
-change in real time as the mouse curser is hover over the geographical
-map. Give it a moment to load</p>
-<iframe align = "center" width = "1000" height = "800"
-src=https://public.tableau.com/views/RetailViz_0/Dashboard1?:embed=y&:display_count=yes&:origin=viz_share_link
-/>
+<p>/&gt;</p>
 </div>
 </div>
 
