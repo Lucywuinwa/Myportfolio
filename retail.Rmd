@@ -256,5 +256,5 @@ plot(rules, method="graph")
 Based on all the analysis done so far in project, tableau dashboard is designed for the management to get the report of the business at a glance. The dashboard that has been designed is interactive, the results change in real time as the mouse curser is hover over the geographical map. Give it a moment to load
 
 <iframe align = "center" width = "1000" height = "800"
-src=https://public.tableau.com/views/RetailStoreVisualization_17166249871100/Dashboard1?:language=en-US&publish=yes&:sid=&:display_count=n&:origin=viz_share_link
+src=
 />
